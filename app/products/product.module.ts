@@ -14,24 +14,33 @@ import { ProductEditInfoComponent } from "./product-edit/product-edit-info.compo
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', component: ProductDetailComponent, resolve: { resolvedData: ProductResolverService } },
       {
-        path: 'products/:id/edit', component: ProductEditComponent,
-        resolve: { resolvedData: ProductResolverService },
+        path: 'products',
         children: [
           {
-            path: '', redirectTo: 'info', pathMatch: 'full'
+              path :'' ,  component: ProductListComponent,
           },
           {
-            path: 'tags', component: ProductEditTagsComponent
+            path: ':id',
+            component: ProductDetailComponent,
+            resolve: { resolvedData: ProductResolverService }
           },
           {
-            path: 'info', component: ProductEditInfoComponent
-          },
-
+            path: ':id/edit', component: ProductEditComponent,
+            resolve: { resolvedData: ProductResolverService },
+            children: [
+              {
+                path: '', redirectTo: 'info', pathMatch: 'full'
+              },
+              {
+                path: 'tags', component: ProductEditTagsComponent
+              },
+              {
+                path: 'info', component: ProductEditInfoComponent
+              }
+            ]
+          }
         ]
-
       }
     ])
   ],
