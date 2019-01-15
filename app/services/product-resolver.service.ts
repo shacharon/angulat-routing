@@ -12,6 +12,9 @@ import { catchError } from "rxjs/internal/operators/catchError";
   providedIn: 'root'
 })
 export class ProductResolverService implements Resolve<ProductResolved> {
+  constructor(private productService : ProductService) { 
+
+  }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): ProductResolved | Observable<ProductResolved> | Promise<ProductResolved> {
     const id = route.paramMap.get('id');
     if(isNaN(+id))
@@ -36,7 +39,5 @@ export class ProductResolverService implements Resolve<ProductResolved> {
     //return this.productService.getProduct(+id);
   }
 
-  constructor(private productService : ProductService) { 
-
-  }
+ 
 }

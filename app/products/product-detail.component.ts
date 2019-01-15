@@ -11,19 +11,36 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
-  //  // + castring to number
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.getProduct(id);
-    const resolvedData : ProductResolved = this.route.snapshot.data['resolvedData'];
-    this.errorMessage = resolvedData.error;
-    this.onProductRetrieved(resolvedData.product);
+    //  // + castring to number
+    //   const id = +this.route.snapshot.paramMap.get('id');
+    //   this.getProduct(id);
+
+// using resolve on a observable 
+    this.route.data.subscribe(
+      data => {
+        const resolvedData: ProductResolved = data['resolvedData'];
+        this.errorMessage = resolvedData.error;
+        this.onProductRetrieved(resolvedData.product);
+      }
+    )
+
+    // this.route.paramMap.subscribe(
+    //   params => {
+    //     const id = +params.get('id');
+    //     this.getProduct(id);
+    //   }
+    // )
+
+    // const resolvedData : ProductResolved = this.route.snapshot.data['resolvedData'];
+    // this.errorMessage = resolvedData.error;
+    // this.onProductRetrieved(resolvedData.product);
   }
 
   pageTitle = 'Product Detail';
   product: Product;
   errorMessage: string;
 
-  constructor(private productService: ProductService, private route :ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   getProduct(id: number) {
     this.productService.getProduct(id).subscribe(

@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { WelcomeComponent } from "./app/home/welcome.component";
 import { PageNotFoundComponent } from "./app/page-not-found.component";
 const ROUTES = [
-   { path : 'welcome' , component : WelcomeComponent},
+      { path : 'welcome' , component : WelcomeComponent},
       { path : '' , redirectTo : 'welcome', pathMatch : 'full'},
       { path : '**' , component : PageNotFoundComponent},
 ]

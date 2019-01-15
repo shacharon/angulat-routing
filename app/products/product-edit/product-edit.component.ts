@@ -33,9 +33,8 @@ export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit';
   errorMessage: string;
   product: Product;
-  private dataIsValid : {
-    
-  } = {};
+  private dataIsValid  : {[key :string] : boolean} = {}
+
   constructor(private productService: ProductService,
     private messageService: MessageService,
     private route: ActivatedRoute,
@@ -105,5 +104,11 @@ export class ProductEditComponent implements OnInit {
     }
     this.router.navigate(['/products'])
     // Navigate back to the product list
+  }
+
+  validate () :void 
+  {
+      this.dataIsValid = {};
+   //   if (this.product.productName && )
   }
 }
