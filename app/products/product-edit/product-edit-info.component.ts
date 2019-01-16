@@ -17,15 +17,12 @@ export class ProductEditInfoComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-     (
-      data => {
-        if (this.product)
-          {
-            this.productForm.reset();
-          }
-        this.product = data['resolvedData'].product;
-
+     
+     this.route.parent.data.subscribe(data => {
+      if (this.productForm) {
+        this.productForm.reset();
       }
-    )
+      this.product = data['resolvedData'].product;
+    });
   }
 }

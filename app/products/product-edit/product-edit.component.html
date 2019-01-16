@@ -4,8 +4,14 @@
   </div>
 <div class="card-body" *ngIf="product">
   <div class="wizard">
-    <a [routerLink]="['info']" >Basic</a>
-    <a [routerLink]="['tags']">Search</a>
+    <a [routerLink]="['info']" routerLinkActive="active" >Basic
+       <span [ngClass]="{'fa fa-exclamation' : !isValid('info')}"></span>
+
+    </a>
+    <a [routerLink]="['tags']" routerLinkActive="active">Search
+             <span [ngClass]="{'fa fa-exclamation' : !isValid('info')}"></span>
+
+    </a>
   </div>
   <router-outlet></router-outlet>
   
@@ -13,9 +19,9 @@
           <button class="btn btn-primary mr-3"
                   style="width:80px"
                   type="button"
-                  [title]="productForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!productForm.valid"
-                  (click)="saveProduct()">
+                   [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                [disabled]="!isValid()"
+                (click)="saveProduct()">
             Save
           </button>
           <button class="btn btn-outline-secondary mr-3"

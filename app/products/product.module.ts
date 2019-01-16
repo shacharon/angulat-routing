@@ -29,15 +29,9 @@ import { ProductEditInfoComponent } from "./product-edit/product-edit-info.compo
             path: ':id/edit', component: ProductEditComponent,
             resolve: { resolvedData: ProductResolverService },
             children: [
-              {
-                path: '', redirectTo: 'info', pathMatch: 'full'
-              },
-              {
-                path: 'tags', component: ProductEditTagsComponent
-              },
-              {
-                path: 'info', component: ProductEditInfoComponent
-              }
+              {path: '', redirectTo: 'info', pathMatch: 'full'},
+              {path: 'tags', component: ProductEditTagsComponent},
+              {path: 'info', component: ProductEditInfoComponent}
             ]
           }
         ]
