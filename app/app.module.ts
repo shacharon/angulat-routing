@@ -9,7 +9,8 @@ import { ProductData } from './products/product-data';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
 /* Feature Modules */
 import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
@@ -26,7 +27,8 @@ import { AppRoutingModule } from "../app-routing.module";
     ProductModule,
     UserModule,
     MessageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     AppComponent,
