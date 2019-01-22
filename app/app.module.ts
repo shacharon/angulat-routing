@@ -12,7 +12,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 /* Feature Modules */
-import { ProductModule } from './products/product.module';
+//import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
 import { RouterModule } from "@angular/router";
@@ -24,7 +24,7 @@ import { AppRoutingModule } from "../app-routing.module";
     BrowserModule,
     HttpClientModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
-    ProductModule,
+    //ProductModule,
     UserModule,
     MessageModule,
     AppRoutingModule,
